@@ -1,0 +1,82 @@
+<div class="register">
+  <div class="registerContainer">
+    <h2>Register</h2>
+
+    <form class="form" form (ngSubmit)="register()">
+      <div>
+        <label for="userName">Username:</label>
+      </div>
+      <div>
+        <input type="text" id="userName" [(ngModel)]="user.userName" name="userName" required>
+        <!-- [(ngModel)]="user.userName" -->
+      </div>
+
+
+      <div>
+        <label for="firstName">Vorname:</label>
+      </div>
+      <div>
+        <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" required>
+        <!-- [(ngModel)]="user.userName" -->
+      </div>
+
+
+      <div>
+        <label for="lastName">Name:</label>
+      </div>
+      <div>
+        <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" required>
+        <!-- [(ngModel)]="user.userName" -->
+      </div>
+
+
+      <div>
+        <label for="email">Email:</label>
+      </div>
+      <div>
+        <input type="email" id="email" [(ngModel)]="user.email" name="email" required>
+        <!-- [(ngModel)]="user.userName" -->
+      </div>
+
+
+      <div>
+        <label for="phone">Telefonnummer:</label>
+      </div>
+      <div>
+        <input type="text" id="phone" [(ngModel)]="user.phone" name="phone">
+        <!-- <input type="email" id="email"  name="email" required> -->
+      </div>
+
+
+      <div>
+        <label for="address">Adresse:</label>
+      </div>
+      <div>
+        <input type="text" id="address" [(ngModel)]="user.address" name="address">
+        <!-- <input type="email" id="email" [(ngModel)]="user.email" name="email" required> -->
+      </div>
+
+
+      <div>
+        <label for="password">Password:</label>
+        <!-- [(ngModel)]="user.password" -->
+      </div>
+      <div>
+        <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
+      </div>
+
+      <div>
+        <button type="submit">Registrieren</button>
+      </div>
+      <div>
+        <p>
+          Haben schon ein Konto?
+        </p>
+        <a routerLink="/login">Bitte hier anmelden.</a>
+      </div>
+    </form>
+
+    <p *ngIf="registrationError" class="error-message">{{ registrationError }}</p>
+  </div>
+
+</div>

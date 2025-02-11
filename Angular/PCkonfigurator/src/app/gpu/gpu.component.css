@@ -1,0 +1,50 @@
+.gpu-container {
+  height: 0px;
+}
+
+.amd, .intel, .nvidia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.amd img, .intel img, .nvidia img {
+  height: 70%;
+  width: 70%;
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px;
+}
+.amd img:hover, .intel img:hover, .nvidia img:hover {
+  transform: scale(1.03);
+  border: 10px solid rgba(235, 127, 27, 0.5);
+  cursor: pointer;
+}
+
+.gpuTitle {
+  display: flex;
+  justify-content: center;
+}
+.gpuTitle h1 {
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.gpu-click {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.4em;
+    color: white;
+  }
+}
+@media only screen and (max-width: 350px) {
+  h1 {
+    font-size: 1em;
+  }
+}/*# sourceMappingURL=gpu.component.css.map */

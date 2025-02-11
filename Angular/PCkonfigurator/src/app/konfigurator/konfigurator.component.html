@@ -1,0 +1,150 @@
+<div class="wrapper">
+    <div class="selecContainer">
+        <div class="cpu" (click)="showModal('CPU')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/Chip.Svg" alt="CPU Chip">
+            </div>
+            <div class="titleBox">
+                <h3>cpu</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{cpu?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="gpu" (click)="showModal('GPU')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/GPU.Svg" alt="GPU Chip">
+            </div>
+            <div class="titleBox">
+                <h3>gpu</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{gpu?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="ram" (click)="showModal('RAM')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/Ram.Svg" alt="ram Chip">
+            </div>
+            <div class="titleBox">
+                <h3>ram</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{ram?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="speicher" (click)="showModal('SPEICHER')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/Harddisk.Svg" alt="speicher bild">
+            </div>
+            <div class="titleBox">
+                <h3>speicher</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{speicher?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="gehaeuse" (click)="showModal('GEHAEUSE')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/GPU.Svg" alt="Gehäuse Bild">
+            </div>
+            <div class="titleBox">
+                <h3>gehäuse</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{gehaeuse?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="mainboard" (click)="showModal('MAINBOARD')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/motherboard.Svg" alt="mainboard bild">
+            </div>
+            <div class="titleBox">
+                <h3>mainboard</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{mainboard?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="kuehler" (click)="showModal('KUEHLER')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/Processorfan.Svg" alt="Kühler bild">
+            </div>
+            <div class="titleBox">
+                <h3>kühler</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{kuehler?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="netzteil" (click)="showModal('NETZTEIL')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/PowerSupply.Svg" alt="Netzteil bild">
+            </div>
+            <div class="titleBox">
+                <h3>netzteil</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{netzteil?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="laufwerk" (click)="showModal('LAUFWERK')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/DVDdrive.Svg" alt="Laufwerk bild">
+            </div>
+            <div class="titleBox">
+                <h3>laufwerk</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{laufwerk?.name}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="selecContainer">
+        <div class="betriebssystem" (click)="showModal('BETRIEBSSYSTEM')">
+            <div class="clickBox">
+                <img class="selecPic" src="http://localhost:3300/selecPic/Disk.Svg" alt="Kühler bild">
+            </div>
+            <div class="titleBox">
+                <h3>betriebssystem</h3>
+                <h4 class="showSel" *ngIf="isLoggedIn">{{betriebssystem?.name}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="warenkorb-container">
+    <div class="warenkorb-button" (click)="kaufen()">
+        Zum Warenkorb
+    </div>
+</div>
+<!-- <img src="http://localhost:3300/amd1.png" alt="AMD"> -->
+
+<div class="modal-container" *ngIf="isModalOpen" (click)="closeModal($event)">
+    <div class="modal">
+        <div class=flex-container>
+
+            <div class="item-container">
+                <div class="item1" *ngFor="let item of items" (click)="clickedItem(item)">
+                    <img [src]="'http://localhost:3300/' + item.typeof + '/' + item.image" alt="" class="item-image">
+                    <h1>{{item.name}}</h1>
+                    <p>Preis: {{item.price}}€</p>
+                    <!-- <p>{{item.image}}</p> -->
+                </div>
+                <!-- <div class="item1"></div>
+                <div class="item1"></div>
+                <div class="item1"></div> -->
+            </div>
+            <div class="auswahlcontainer">
+                <div class="auswahl">
+                    <h1>{{clicked?.name}}</h1>
+                    <p>Beschreibung: {{clicked?.description}}</p>
+                    <p>Power: {{clicked?.power}}</p>
+                    <p>Anzahl: {{clicked?.quantity}}</p>
+                    <!-- <p *ngIf="itemAlreadyExist()" class="error-item">Das Item existiert bereits</p> -->
+                </div>
+
+                <button (click)="addToCart()" class="addToCart">Hinzufügen</button>
+            </div>
+            <span class="close" (click)="closeModal($event)">X</span>
+        </div>
+    </div>
+</div>

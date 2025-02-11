@@ -1,0 +1,44 @@
+.account-box{
+    background-color: #c2c2c2;
+    margin: auto;
+    width: 80%;
+    //height: fit-content;
+    border-radius: 5px;
+    padding: 15px;
+    top: 30px;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.orderBox {
+    background-color: rgb(218, 218, 218);
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.showOrderInfo{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1em;
+}
+
+s{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1000px) {
+    .showOrderInfo{
+        font-size: .5em;
+    }
+
+
+}

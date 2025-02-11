@@ -1,0 +1,76 @@
+<div class="content">
+    <div class="slider-container">
+        <img src="assets/image4.jpg" alt="Bild1" class="img-slider">
+
+        <div class="slider-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="arrow prev">&lt;</div>
+        <div class="arrow next">&gt;</div>
+    </div>
+
+    <div class="flex-container">
+        <div class="pc-config">
+            <h1 class="headline">PC selber konfigurieren</h1>
+            <p>Baue dir hier deinen Traum PC zusammen</p>
+            <p>Unser PC-Konfigurator ermöglicht es dir, die neuesten Komponenten nach deinem Geschmack auszuwählen</p>
+            <p>Ob Gaming, Arbeit oder Multimedia - gestalte deinen PC perfekt nach deinen Bedürfnissen</p>
+            <p>Schluss mit Kompromissen – hier bestimmst du, was in deinen PC kommt. Starte jetzt und entdecke die Welt
+                der
+                grenzenlosen Möglichkeiten!</p>
+
+            <img src="../../assets/konfigurieren.jpg" alt="Konfigurator" class="konfig-img showImage">
+            <div class="btncenter">
+                <a routerLink="/konfigurator/cpu" class="navigate">Zum Konfigurator</a>
+            </div>
+        </div>
+        <div class="pc-done">
+            <h1 class="headline">Vorgefertigte PC's anschauen</h1>
+            <p>Entdecke unsere vorgefertigten PCs – optimale Leistung, Zuverlässigkeit und Stil in einem</p>
+            <p>Von Gaming bis zu Arbeitsstationen – finde deinen perfekten PC, einsatzbereit und von Experten kuratiert
+            </p>
+            <p>Einfach auspacken und loslegen. Finde heute deinen idealen Begleiter in der Welt der vorgefertigten PCs!
+            </p>
+
+            <img src="../../assets/gaming-computer.jpg" alt="" class="gaming-pc showImage">
+            <div class="btncenter">
+                <a routerLink="/fertigpc" class="navigate">Zu Fertige PC's</a>
+            </div>
+        </div>
+        <div class="trends">
+            <h1 class="headline">Trends und News</h1>
+            <p>Tauche ein in die neuesten Trends und News der Tech-Welt! </p>
+            <p>Wir halten dich stets auf dem Laufenden über die innovativsten Technologien, aufregendsten
+                Entwicklungen Produkte.</p>
+            <p>Ob bahnbrechende Gadgets, Software-Revolutionen oder die heißesten Trends der Branche – wir bringen
+                dir die wichtigsten Informationen direkt auf den Bildschirm.</p>
+                <h3>Gerade in:</h3>
+            <div class="trendsContainer">
+
+                <div *ngFor="let trend of trends" class="trendsBox">
+                    <p class="trendsName">Name: {{trend.name}}</p>
+                    <p>Type: {{trend.typeof}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="support">
+        <div class="supportText">
+            <h1 class="headline">Kundensupport</h1>
+            <p>Falls es Probleme mit dem Konfigurator oder dem Produkt hast, <br>
+                Kontaktiere uns einfach!</p>
+            <p>Unser Support hilft dir gerne</p>
+        </div>
+        <div className=contact>
+            <a href="mailto:confignow@web.de" class=contactlink>Kontaktiere uns</a>
+          </div>
+    </div>
+</div>
+
+<div class="notify" *ngIf="getNotifyIn()">Sie wurden erfolgreich angemeldet</div>
+<div class="notify" *ngIf="getNotifyOut()">Sie wurden erfolgreich abgemeldet</div>

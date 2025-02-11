@@ -1,0 +1,359 @@
+.content {
+    margin-inline: auto;
+    max-width: 72%;
+    background-color: #333;
+    padding: 20px;
+    margin-top: 20px;
+    transition: 0.4s ease-in-out;
+
+}
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 333px;
+    // max-width: 600px;
+    // margin: auto;
+}
+
+.img-slider {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    // margin: 0 auto;
+
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #aaa;
+    cursor: pointer;
+
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.pc-config,
+.pc-done,
+.trends {
+    flex: 1;
+    text-align: center;
+    padding: 5px 25px;
+    background-color: #d1d1d1;
+    position: relative;
+
+}
+
+.trendsContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.news {
+    background-color: #d1d1d1;
+
+}
+
+.support {
+    display: flex;
+    justify-content: space-around;
+    background-color: #969696;
+    margin-top: 5px;
+    align-items: center;
+}
+
+.konfig-img,
+.gaming-pc {
+    width: 400px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    margin: 0;
+    background-color: #333;
+}
+
+.notify {
+    text-align: center;
+    z-index: 3;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20%;
+    background-color: rgb(221, 221, 221);
+    padding: 10px;
+    border-radius: 2px;
+    opacity: 0;
+    animation: fadeIn 2000ms;
+    cursor: default;
+    user-select: none;
+    font-size: large;
+}
+
+.supportText {
+    padding: 5px;
+    width: 40%;
+}
+
+.trendsName {
+    animation-name: beatingEffect;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    font-weight: 500;
+}
+
+.trendsBox {
+    box-shadow: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2); 
+    border-radius: 10%;
+    padding: 5px;
+    background: rgb(219, 219, 219);
+    
+    margin: 15px;
+}
+
+.showImage{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contactlink {
+    background-color: antiquewhite;
+    color: black;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 20px 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: rgb(249, 241, 231);
+    }
+
+    &:active {
+        background-color: rgb(101, 101, 101);
+    }
+}
+
+.btncenter {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.navigate {
+    display: block;
+    width: 25%;
+    background-color: rgb(222, 133, 17);
+    color: black;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 20px 40px;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: rgb(235, 159, 60);
+    }
+
+    &:active {
+        background-color: rgb(101, 101, 101);
+    }
+}
+
+
+@media only screen and (max-width: 1100px) {
+    .content {
+        max-width: 90%;
+    }
+
+    .supportPic {
+        max-width: 50%;
+        max-height: 10%;
+        object-fit: cover;
+    }
+
+    .supportText {
+        h1 {
+            font-size: 1.6em;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    .content {
+        margin-top: 0px;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .supportText {
+        h1 {
+            font-size: 1.4em;
+        }
+
+        p {
+            font-size: 1em;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .supportText {
+        h1 {
+            font-size: 1.1em;
+        }
+
+        p {
+            font-size: 1em;
+        }
+    }
+
+    .trendsBoxContainer{
+        p{
+            font-size: .5em;
+            font-weight: bold;
+        }
+    }
+
+    .trendsContainer{
+        flex-direction: column;
+    }
+
+
+}
+
+
+
+@media only screen and (max-width: 450px) {
+    .pcConfig,
+    .pcDone {
+        flex: 1;
+        text-align: center;
+        padding: 5px 25px;
+        background-color: rgb(236, 236, 236);
+        position: relative;
+        width: 100%;
+        p{
+            color: black;
+            font-size: 10px;
+        }
+    
+    }
+
+    .contactlink {
+        width: 100px;
+        text-align: center;
+        font-size: 8px;
+        height: 50px;
+    }
+
+    .trendsBoxContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contactlink {
+        width: 100px;
+        text-align: center;
+        font-size: 8px;
+        height: 50px;
+    }
+
+    .trendsBoxContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navigate{
+        font-size: 8px;
+        width: 50%;
+    }
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes beatingEffect {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.15;
+    }
+
+    100% {
+        scale: 1;
+    }
+}

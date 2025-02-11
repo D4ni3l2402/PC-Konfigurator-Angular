@@ -1,0 +1,130 @@
+<div class="wrapper">
+    <div class="bestell-container">
+        <h1>Deine Konfiguration...</h1>
+
+        <div class="bestellung">
+            <div *ngFor="let item of donePcItems" class="componentContainer">
+                <h3>{{ item.namepc }}</h3>
+                <p>{{ item.price }}€</p>
+                <button (click)="clickeditem(item)">Ändern</button>
+            </div>
+            <div *ngFor="let item of regularItems" class="componentContainer">
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.price }}€</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="leftContainer">
+        <button class="editConfig" (click)="navigateToKonfigurator()">Bearbeiten</button>
+        <div class=editConfig (click)="deleteCartItems()">Alle Konfigurationen entfernen</div>
+
+        <div class="coupon-code-container">
+            <input type="text" id="couponCode" [(ngModel)]="discountcode" placeholder="Enter coupon code"
+                name="couponCode" required>
+            <button (click)="applyCoupon()">Apply Coupon</button>
+        </div>
+        <div *ngIf="couponMessage" class="coupon-message" [class.success]="couponMessageType === 'success'"
+            [class.error]="couponMessageType === 'error'">
+            {{ couponMessage }}
+        </div>
+
+        <div *ngIf="isDiscounted; else notDiscounted">
+            <s>Originalpreis: {{totalAmount.toFixed(2)}}€</s>
+            <h2>Gesamtpreis: {{(totalAmount * (1-(getDiscountPercen/100))).toFixed(2)}}€</h2>
+        </div>
+        <ng-template #notDiscounted>
+            <h2>Gesamtpreis: {{totalAmount.toFixed(2)}}€</h2>
+        </ng-template>
+
+        <div *ngIf="missingItems">
+            <h3>Deine Konfiguration ist unvollständig! <br /> Klicke oben auf "Bearbeiten"</h3>
+        </div>
+
+        <button class="abschliessen" (click)="completePurchase()">Kauf abschließen</button>
+    </div>
+</div>
+
+
+<div class="modal-container" *ngIf="isModalOpen" (click)="closeModal($event)">
+    <div class="modal">
+        <div class="flex-container">
+            <div class="infoText">
+
+                <div class="scrollable">
+                    <h1>{{klicked.namepc}}</h1>
+                    <h2>Prozessor: {{klicked.ncpu}}</h2>
+                    <h2>Grafikkate: {{klicked.ngpu}}</h2>
+
+                    <!-- //Ram-------------------------------- -->
+                    <div class="changable" (click)="typeOf('ram')">
+                        <h2 *ngIf="selRam; else elseRam">Ram: {{selRam.name}} +{{selRam.price}}€</h2>
+
+                        <ng-template #elseRam>
+                            <h2>
+                                Ram: {{klicked.nram}}
+                            </h2>
+                        </ng-template>
+                    </div>
+                    <div class="itemList ram" id="ram">
+                        <h2 *ngFor="let ram of ramList" (click)="clickedItem(ram)">{{ram.name}}</h2>
+                    </div>
+
+                    <!-- //Speicher----------------- -->
+                    <div class="changable" (click)="typeOf('speicher')">
+                        <h2 *ngIf="selSpeicher; else elseSpeicher">Speicher: {{selSpeicher.name}}
+                            +{{selSpeicher.price}}€</h2>
+
+                        <ng-template #elseSpeicher>
+                            <h2>
+                                Speicher: {{klicked.nspeicher}}
+                            </h2>
+                        </ng-template>
+                    </div>
+                    <div class="itemList speicher" id="speicher">
+                        <h2 *ngFor="let speicher of speicherList" (click)="clickedItem(speicher)">{{speicher.name}}</h2>
+                    </div>
+
+                    <h2>Gehaeuse: {{klicked.ngehaeuse}}</h2>
+                    <h2>Kuehler: {{klicked.mkuehler}}</h2>
+                    <h2>Netzteil: {{klicked.nnetzteil}}</h2>
+
+                    <!-- //OS------------------------------------- -->
+                    <div class="changable" (click)="typeOf('os')">
+                        <h2 *ngIf="selOS; else elseOs">Betriebssystem: {{selOS.name}} +{{selOS.price}}€</h2>
+
+                        <ng-template #elseOs>
+                            <h2>
+                                Betriebssystem: {{klicked.nos}}
+                            </h2>
+                        </ng-template>
+                    </div>
+                    <div class="itemList os" id="os">
+                        <h2 *ngFor="let os of osList" (click)="clickedItem(os)">{{os.name}} </h2>
+                    </div>
+                </div>
+
+                <div>
+                    <h1 *ngIf="newPrice; else elsePrice">
+                        Preis: {{newPrice}}€
+                    </h1>
+
+                    <ng-template #elsePrice>
+                        <h1>
+                            Preis: {{klicked.pcprice}}€
+                        </h1>
+                    </ng-template>
+                </div>
+                <div class="itemList speicher" id="speicher">
+                    <h2 *ngFor="let speicher of speicherList" (click)="clickedItem(speicher)">{{speicher.name}}</h2>
+                </div>
+
+                <!-- <h1 class="price">PREIS: {{choosenPC.pcprice}}€</h1> -->
+                <div class="buyButton" (click)="updatePC()">
+                    FERTIG
+                </div>
+            </div>
+            <span class="close" (click)="closeModal($event)">X</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<header>
+    <nav>
+        <label class="logo" routerLink="start">ConfigNow</label>
+        <!-- <img src="../../assets/ConfigNow_logo.png" class="classIcon"> -->
+        <ul>
+            <li><a class="nav-link active" routerLink="/start" routerLinkActive="active">Startseite</a></li>
+            <li> <a class="nav-link" routerLink="/konfigurator/cpu" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: false }">Konfigurator</a></li>
+            <li><a class="nav-link" routerLink="/fertigepcs" routerLinkActive="active">Fertige PC's</a></li>
+            <li><a class="nav-link" routerLink="/impressum" routerLinkActive="active">Impressum</a></li>
+        </ul>
+
+        <div class="options">
+            <img src="../../assets/shopping-cart-128.png" alt="Einkaufswagen" class="cart" (click)="navigateToCart()">
+            <div class="hamburgerMenu nav-icon" (click)="openSidebar()">
+                <div class="line iconPartI"></div>
+                <div class="line iconPartII"></div>
+                <div class="line iconPartIII"></div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="sidebar">
+    <div class="sidebar-container">
+        <div *ngIf="isLoggedIn(); else loginBlock" class="welcome-msg">
+            <h3>Willkommen, {{ getCurrentUser() }}</h3>
+            <button class="accountBtn" routerLink="/account">Mein Account</button>
+            <button class="logout" (click)="logout()">Abmelden</button>
+        </div>
+        <ng-template #loginBlock>
+            <div class="logReg-container">
+                <div class="login-prompt">
+                    <button class="login-btn" (click)="login()">Anmelden</button>
+                </div>
+    
+                <div class="login-prompt">
+                    <button class="register-btn" (click)="register()">Regristieren</button>
+                </div>
+            </div>
+        </ng-template>
+        <div class="dash" id="dashNav"></div>
+
+        <div class="sideNavlink">
+            <a class="nav-link active" routerLink="/start" routerLinkActive="active">Startseite</a>
+            <a class="nav-link" routerLink="/konfigurator/cpu" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: false }">Konfigurator</a>
+            <a class="nav-link" routerLink="/fertigepcs" routerLinkActive="active">Fertige PC's</a>
+            <a class="nav-link" routerLink="/impressum" routerLinkActive="active">Impressum</a>
+        </div>
+
+        <div class="dash"></div>
+        <h2 class="h2">Verfügbarkeit</h2>
+        <ul class="available-list">
+            <li class="available-link" (click)="showModal('CPU')">cpu</li>
+            <li class="available-link" (click)="showModal('GPU')">grafikkarte</li>
+            <li class="available-link" (click)="showModal('RAM')">ram</li>
+            <li class="available-link" (click)="showModal('SPEICHER')">speicher</li>
+            <li class="available-link" (click)="showModal('MAINBOARD')">mainboard</li>
+            <li class="available-link" (click)="showModal('KUEHLER')">kühler</li>
+            <li class="available-link" (click)="showModal('NETZTEIL')">netzteil</li>
+            <li class="available-link" (click)="showModal('LAUFWERK')">laufwerk</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modal-container" *ngIf="isModalOpen" (click)="closeModal($event)">
+    <div class="modal">
+        <div class="flex-container">
+
+            <div class="item-container">
+                <div class="item1" *ngFor="let item of items" (click)="clickedItem(item)">
+                    <h1>{{item.name}}</h1>
+                    <p>{{item.price}}€</p>
+                    <p>{{item.description}}</p>
+                    <p>Menge: {{item.quantity}}</p>
+                </div>
+                <!-- <div class="item1"></div>
+                <div class="item1"></div>
+                <div class="item1"></div> -->
+            </div>
+            <!-- <div class="auswahl">
+                <h1>{{clicked?.name}}</h1>
+
+                <p>{{clicked?.power}}</p>
+
+            </div> -->
+            <span class="close" (click)="closeModal($event)">X</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="login">
+  <div class="loginContainer">
+    <h2>Einloggen</h2>
+
+    <form class="form" (ngSubmit)="login()">
+      <div>
+        <label for="userName">Username:</label>
+      </div>
+      <div>
+        <input type="text" id="userName" [(ngModel)]="user.userName" name="userName" required>
+        <!-- [(ngModel)]="user.userName" -->
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <!-- [(ngModel)]="user.password" -->
+      </div>
+      <div>
+        <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
+      </div>
+      <div>
+        <button type="submit">Anmelden</button>
+      </div>
+      <div>
+        <p>
+          Noch kein Konto?
+        </p>
+        <a routerLink="/register">Bitte hier regristieren.</a>
+      </div>
+
+      <!-- <div>
+            <a href="Link-Ziel">Passwort vergessen?</a>
+        </div> -->
+    </form>
+    <div *ngIf="loginFailed == true" class="failedLog">
+      Fehler bei der Anmeldung. Versuche es erneut!
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,49 @@
+<div class="account-container">
+  <div class="account-box">
+    <h3>Benutzerdaten</h3>
+    <p>Benutzername: {{ details.firstname }}</p>
+    <p>Vorname: {{ details.lastname }}</p>
+
+    <div class="order-history">
+      <h3>Deine Bestellhistorie:</h3>
+      <div *ngFor="let order of orderd" class="orderBox">
+        <div class="showOrderInfo">
+          <h3>Bestellnummer: {{ order.bestellnr }}</h3>
+          <h3>Bestelldatum: {{ order.orderdate.slice(0, 10) }}</h3>
+          <div *ngIf="order.discounted; else notDiscounted">
+            <s>Originalpreis: {{order.totalpriceperBestellungen.toFixed(2)}}€</s>
+            <h3>Gesamtpreis: {{(order.totalpriceperBestellungen * (1-(order.discount/100))).toFixed(2)}}€</h3>
+          </div>
+          <ng-template #notDiscounted>
+            <h3>Gesamtpreis: {{order.totalpriceperBestellungen.toFixed(2)}}€</h3>
+          </ng-template>
+
+
+        </div>
+        <div *ngFor="let item of order.itemsList">
+          <h4>Name: {{ item.name }}</h4>
+          <h4>Preis: {{ item.price }} €</h4>
+
+          <div *ngIf="!item.selRam; else notRam">
+          </div>
+          <ng-template #notRam>
+            Veränderte Ram: {{item.selRam}}
+          </ng-template>
+
+          <div *ngIf="!item.selSpeicher; else notSpeicher">
+          </div>
+          <ng-template #notSpeicher>
+            Veränderte Speicher: {{item.selSpeicher}}
+          </ng-template>
+
+          <div *ngIf="!item.selOS; else notOS">
+          </div>
+          <ng-template #notOS>
+            Veränderte OS: {{item.selOS}}
+          </ng-template>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
